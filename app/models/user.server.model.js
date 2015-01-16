@@ -42,6 +42,13 @@ UserSchema.virtual('fullName').get(function() {
     this.lastName = splitName[1] || '';
 });
 
+UserSchema.statics.findOneByUsername = function (username, callback) {
+    this.findOne({ username: new RegExp(username, 'i') }, callback);
+};
+
+UserSchema.methods.authenticate = function(password) {
+    return this.password === password;
+};
 //Convert MongoDB document to json representation
 UserSchema.set('toJSON', { getters: true, virtuals: true });
 mongoose.model('User', UserSchema);

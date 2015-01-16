@@ -27,8 +27,8 @@ module.exports = function() {
 	secret: config.sessionSecret
   }));
  
-  app.set('views', './app/views');
-  app.set('view engine', 'ejs');
+  app.set('views', './app/views'); //the directory where the template files are located.
+  app.set('view engine', 'ejs'); //the template engine to use
 
   require('../app/routes/index.server.routes.js')(app);
   require('../app/routes/users.server.routes.js')(app);
