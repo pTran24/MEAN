@@ -6,30 +6,40 @@ var UserSchema = new Schema({
   lastName: String,
   email: { 
       type: String,
-      index: true   // Mark as secondary index
+      index: true,   // Mark as secondary index
+      match: /.+\@.+\..+/   // Field validation: must match regex
   },
   username: {
-	type: String,
-	trim: true,
-    unique: true    // Creates index
+    type: String,
+    trim: true,
+    unique: true,   // Creates index
+    required: true  // Field validation: is required(NOT NULL)
   },
-  password: String,
+  password: {
+      type: String,
+      validate: [ // Create custom field validation
+        function(password) {
+            return password.length >= 6;
+        },
+        'Password should be longer' // Error message passed if function fail
+      ]
+  },
   created: {
-	type: Date,
-	default: Date.now
+    type: Date,
+    default: Date.now
   },
   website: {
-	type: String,
-	get: function(url) {
-	  if (!url) {
-		return url;
-	  } else {
-		if (url.indexOf('http://') !== 0 && url.indexOf('https//') !== 0) {
-		  url = 'http://' + url;
-		}
-		return url;
-	  }
-	}
+    type: String,
+    get: function(url) {
+      if (!url) {
+        return url;
+      } else {
+        if (url.indexOf('http://') !== 0 && url.indexOf('https//') !== 0) {
+          url = 'http://' + url;
+        }
+        return url;
+      }
+    }
   }
 });
 
