@@ -1,0 +1,24 @@
+.h1row {
+    background: #FF0000;
+}
+.h2row {
+    //background: #0000FF;
+}
+.h3row {
+    //background: #04B404;
+}
+.firstcol {
+    background: #1C1C1C;
+}
+.secondcol {
+    background: #FE2EF7;
+}
+.thirdcol {
+    background: #FE2EF7;
+}
+.footer {
+    background: #A4A4A4;
+}
+ .glyphicon {
+    font-size: 32px;
+}
