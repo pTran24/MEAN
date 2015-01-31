@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head>
+    <title>First AngularJS App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class='container'>
+
+        <div class='row toplevel well-lg    ' ng-controller="FirstController">
+            <div class='col-md-7 col-md-offset-2 well well-lg'>
+                <span>Name:</span>
+                <input type="text" ng-model="first">
+                <input type="text" ng-model="last">
+                <button ng-click='updateMessage()' class='btn btn-info'>Message</button>
+                <hr>
+                {{heading + message}}
+            </div>
+        </div>
+
+        <div class='row h1row' ng-controller="SimpleTemplate">
+            <div class='col-md-6 h2col1 well'>
+                <i class='glyphicon glyphicon-fire'></i>
+                <h1 class='myh1'>Data Binding</h1>
+                <p>Value A: <input type="number" ng-model="valueA"</p>
+                <p>Value B: <input type="number" ng-model="valueB"</p>
+                <p>Expression: {{valueA}} + {{valueB}}</p>
+                <p>Live Expression Value: {{valueA + valueB}}</p>
+                <input type="button" class='btn btn-default'ng-click="addValues(valueA, valueB)" value="Click to Add Values {{valueA}} & {{valueB}}"/>
+                <p>Clicked Expression Value: {{valueC}}</p>
+            </div>
+            <div class='col-md-6 h2col2 well'>
+                <h2 class='myh2'>H2 Header <i class='glyphicon glyphicon-plane'></i></h2>
+                <p>Click a button to determine your fate!</p>
+                <button type="button" class='btn btn-lg btn-default'>First Button</button>
+                <button type="button" class='btn btn-primary'>Second Button</button>
+                <div ng-controller='LevelA'>
+
+                    <div ng-controller='LevelB'>
+
+                        <div ng-controller='LevelC'>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row h3row'>
+            <div class='col-md-4 firstcol well'>
+                <i class='glyphicon glyphicon-leaf'></i>
+                <h3>One</h3>
+                <p class='lead'>Paragraph under first column.</p>
+                <p>Another Paragraph under first column.</p>
+            </div>
+            <div class='col-md-4 secondcol well'>
+                <i class='glyphicon glyphicon-tint'></i>
+                <h3>Two</h3>
+                <p>Paragraph under second column.</p>
+            </div>
+            <div class='col-md-4 thirdcol well'>
+                <i class='glyphicon glyphicon-flash'></i>
+                <h3>Three</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Javascript References -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="js/first.js"></script>
+</body>
+</html>
