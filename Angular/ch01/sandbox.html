@@ -8,8 +8,9 @@
 </head>
 <body>
 	<div class='container'>
-
-		<div class='row row-one well-lg' ng-controller="FirstController">
+		<!-- Row 1 -->
+		<div class='row row-one well-lg' ng-controller="FirstControllerCtrl">
+			<!-- Col 1 -->
 			<div class='col-md-7 col-md-offset-2 well well-lg'>
 				<h1 class='well well-sm'>Sandbox </h1>
 				<span>Name:</span>
@@ -20,31 +21,33 @@
 				{{heading + message}}
 			</div>
 		</div>
-
-		<div class='row row-two' ng-controller="SimpleTemplate">
+		<!-- Row 2 -->
+		<div class='row row-two' ng-controller="SimpleTemplateCtrl">
+			<!-- Col 1 -->
 			<div class='col-md-6 r2col1 well'>
 				<i class='glyphicon glyphicon-fire'></i>
 				<h1 class='myh1'>Data Binding</h1>
 				<p>Value A: <input type="number" ng-model="valueA"</p>
 				<p>Value B: <input type="number" ng-model="valueB"</p>
 				<p>Expression: {{valueA}} + {{valueB}}</p>
-				<p>Live Expression Value: {{valueA + valueB}}</p> 
+				<p>Live Expression Value: {{valueA + valueB}}</p>
 				<input type="button" class='btn btn-default'ng-click="addValues(valueA, valueB)" value="Click to Add Values {{valueA}} & {{valueB}}"/>
 				<p>Clicked Expression Value: {{valueC}}</p>
 			</div>
+			<!-- Col 2 -->
 			<div class='col-md-6 r2col2'>
 				<h2 class='myh2'>Scope Hierarchy <i class='glyphicon glyphicon-plane'></i></h2>
 				<p>Click a button to determine your fate!</p>
 				<button type="button" class='btn btn-lg btn-default'>Does Nothing</button>
 				<button type="button" class='btn btn-primary'>Dud</button>
-				<div ng-controller='LevelA'>
+				<div ng-controller='LevelACtrl'>
 					<h3>{{title}}</h3>
 					<p>ValueA = {{valueA}} <input type="button" ng-click="inc()" value="+"/></p>
-					<div ng-controller='LevelB'>
+					<div ng-controller='LevelBCtrl'>
 						<h3>{{title}}</h3>
 						<p>ValueA = {{valueA}}</p>
 						<p>ValueB = {{valueB}} <button class='btn btn-danger'type="button" ng-click="inc()"><i class='glyphicon glyphicon-plus-sign'></i></button></p>
-						<div ng-controller='LevelC'>
+						<div ng-controller='LevelCCtrl'>
 							<h3>{{title}}</h3>
 							<p>ValueA = {{valueA}}</p>
 							<p>ValueB = {{valueB}}</p>
@@ -54,9 +57,10 @@
 				</div>
 			</div>
 		</div>
-
+		<!-- Row 3 -->
 		<div class='row row-three'>
-			<div class='col-md-4 r3col1 well' ng-controller="ArrayManipulate">
+			<!-- Col 1 -->
+			<div class='col-md-4 r3col1' ng-controller="ArrayManipulateCtrl">
 				<i class='glyphicon glyphicon-leaf'></i>
 				<h3>Array Manipulation</h3>
 				<p class='lead'>Paragraph under first column.</p>
@@ -70,9 +74,10 @@
 				<p>Size of Array: {{myArr.length}}</p>
 				<p>Max number removed from the array: {{Math.max.apply(Math, removedArr)}}</p>
 			</div>
+			<!-- Col 2 -->
 			<div class='col-md-4 r3col2'>
 				<i class='glyphicon glyphicon-tint'></i>
-				<h3>Two</h3>
+				<h3>Filters</h3>
 				<p>Paragraph under second column.</p>
 				<p>Filters:</p>
 				<p>json {{ {name:'bob'} | json}}</p>
@@ -81,17 +86,25 @@
 				<p>lowercase {{ 'UPPERCASE'|lowercase }}</p>
 				<p>date {{ 1389323623006|date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
 			</div>
-			<div class='col-md-4 r3col3 well'>
-				<i class='glyphicon glyphicon-flash'></i>
-				<h3>Three</h3>
+			<!-- Col 3 -->
+			<div class='col-md-4 r3col3 well' ng-controller="FormCtrl">
+				<h3><i class='glyphicon glyphicon-flash'></i>Form</h3>
+				<p><input type="text" ng-model="someText"> {{someText}}</p>
+				<p><input type="checkbox" ng-model="cbValue" ng-true-value="Awesome!" ng-false-value="Bummer"> Checkbox: {{cbValue}}</p>
+				<p><input type="radio" ng-model="cameraName" value="Canon"> Canon</p>
+				<p><input type="radio" ng-model="cameraName" value="Nikon"> Nikon</p>
+				<p>Selected Camera: {{cameraName}}</p>
+				<select -ng-model="camera" ng-options="c.model group by c.make for c in cameras"></select>
+				{{camera|json}}
 			</div>
 		</div>
-
-		<div class='row row-four well-lg'>
-			<div class='col-md-4' ng-controller="Filtering">
-				<div class='col-md-12 well'>
+		<!-- Row 4 -->
+		<div class='row row-four well'>
+			<!-- Col 1 -->
+			<div class='col-md-4 well r4col1' ng-controller="FilteringCtrl">
+				<div class='col-md-12'>
 					<h1>Filtering</h1>
-					<input type="text" ng-model="filterString">
+					<input type="text" ng-model="filterString" ng-Change="setFilter()">
 					<input type="button" ng-click="setFilter()" value="Filter">
 					<table class='filter'>
 						<tr>
@@ -107,11 +120,37 @@
 					</table>
 				</div>
 			</div>
-			<div class='col-md-4' ng-controller="customFilter">
+			<!-- Col 2 -->
+			<div class='col-md-4 r4col2' ng-controller="customFilterCtrl">
 				<h2>Custom Filter</h2>
 				<p>{{phrase|censor:censorText}}</p>
 				<p>{{"This is some bad, dark, evil text." | censor:"happy"}}</p>
 				<p ng-click="filterText()">{{txt}}</p>
+			</div>
+			<!-- Col 3 -->
+			<!-- Broken ng-include -->
+			<div class='col-md-4 well' ng-controller="ngincludeCtrl">
+				<h3>BROKEN ng-include</h3>
+				[<a ng-click="titleBar='views/large_title.html'">Make Title Large</a>]
+				[<a ng-click="titleBar='views/small_title.html'">Make Title Small</a>]
+				<div ng-include="titleBar">{{titleBar}}</div>
+			</div>
+		</div>
+		<!-- Row 5 -->
+		<div class='row'>
+			<div class='col-md-4 well' ng-controller="bindingCtrl">
+				<h2>Data Binding Directives</h2>
+				<label ng-repeat="color in colors">
+					{{color}}
+					<input type="radio" ng-model="myStyle['background-color']" ng-value="color" id="{{color}}" name="mColor">
+				</label>
+				<span class="rect" ng-style="myStyle"></span><hr>
+
+				<li ng-repeat="day in days">
+					<span ng-class-even="'even'">{{day}}</span>
+				</li><hr>
+				Show Message: <input type="checkbox" ng-model="checked" />
+				<p ng-if="checked" ng-bind="msg"> </p>
 			</div>
 		</div>
 	</div> <!-- End Container-->
@@ -120,6 +159,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
-	<script src="js/first.js"></script>
+	<script src="js/main.controller.js"></script>
 </body>
 </html>

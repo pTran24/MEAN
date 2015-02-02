@@ -11,7 +11,7 @@
     background: #D8F6CE;
 }
 .row-three {
-    background: #04B404;
+    background: #E6E6E6;
 }
 .r3col1 {
     background: #1C1C1C;
@@ -21,14 +21,47 @@
     background: #F781F3;
 }
 .r3col3 {
-    background: #FE2EF7;
+    background: #58ACFA;
 }
 .row-four {
     background: #2E64FE;
 }
+.r4col1 {
+    background: #F78181;
+}
+.r4col2 {
+    background: #9AFE2E;
+}
 .footer {
     background: #A4A4A4;
 }
- .glyphicon {
+.glyphicon {
     font-size: 32px;
+}
+.evenRow {
+    background: #FFFFFF;
+}
+.even {
+    background-color: lightgrey;
+}
+.rect {
+    display: inline-block;
+    height: 40px;
+    width: 100px;
+}
+.large {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    font: bold 50px/80px verdana, serif;
+    border: 6px black ridge;
+}
+.small {
+    background-color: lightgreat;
+    text-align: center;
+    border: 1px black solid;
+}
+a {
+    color: blue; text-decoration: underline;
+    cursor: pointer;
 }
