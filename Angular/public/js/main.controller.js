@@ -86,7 +86,7 @@
         };
     }])
     .controller('ngincludeCtrl', ['$scope', function($scope){
-        $scope.titleBar = "small_title.html";
+        $scope.titleBar = "views/small_title.html";
     }])
     .controller('FormCtrl', ['$scope', function($scope){
         $scope.cameras = [
