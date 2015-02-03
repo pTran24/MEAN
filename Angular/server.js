@@ -7,23 +7,21 @@ var mysql = require('mysql');
 var morgan = require('morgan');
 var bodyParse = require('body-parser');
 var connection = mysql.createConnection({
-    host        : '127.0.01',
-    port        : 3333,
-    user        : 'phong',
-    password    : 'dtvtest',
-    database    : 'lisacatalog',
+    host : '127.0.0.1',
+    port : 3333,
+    user : 'xajin',
+    password : 'secretpw',
 });
 
 // mySQL config
 connection.connect();
-/*
-var query = 'SELECT 1 + 1 AS solution;';
+var query = 'SELECT * FROM lisacatalog.domain;';
 connection.query(query, function(err, rows, fields){
     if (err) throw err;
     for (var i in rows) {
-        console.log('The solution is: ', rows[i].solution);
+        console.log('The solution is: ', rows[i]);
+    }
 });
-*/
 connection.end();
 
 // Configuration
