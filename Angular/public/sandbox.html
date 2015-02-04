@@ -138,8 +138,9 @@
 		</div>
 		<!-- Row 5 -->
 		<div class='row'>
-			<div class='col-md-4 well' ng-controller="bindingCtrl">
-				<h2>Data Binding Directives</h2>
+			<!-- Col 1 -->
+			<div class='col-md-3' ng-controller="bindingCtrl">
+				<h3>Data Binding Directives</h3>
 				<label ng-repeat="color in colors">
 					{{color}}
 					<input type="radio" ng-model="myStyle['background-color']" ng-value="color" id="{{color}}" name="mColor">
@@ -152,6 +153,29 @@
 				Show Message: <input type="checkbox" ng-model="checked" />
 				<p ng-if="checked" ng-bind="msg"> </p>
 			</div>
+			<!-- Col 2 -->
+			<div class='col-md-6' ng-controller="customDirectiveCtrl">
+				<h2>Custom Directive Manipulating the DOM</h2>
+				<myBox title="Simple Text" bwidth="100px">
+					Using AngularJS to build a simple box around elements.
+				</myBox>
+				<myBox title="Image" bwidth="150px">
+					<img src="/images/arch.jpg" width="150px" />
+				</myBox>
+				<myBox title="Paragraph" bwidth="200px">
+					<p>Using AngularJS to build a simple box around a paragraph.<p>
+				</myBox>
+			</div>
+		</div>
+		<!-- Row 6 -->
+		<div class='row'>
+			<!-- Col 1 -->
+			<div class='col-md-12'>
+				<h2>Custom Directive Zoom and Fade</h2>
+				<img src="img/dog_640.jpg" zoomit></img>
+				<img src="img/dog_640.jpg" fadeit></img>
+				<img src="img/dog_640.jpg" zoomit fadeit></img>
+			</div>
 		</div>
 	</div> <!-- End Container-->
 
@@ -160,5 +184,4 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
 	<script src="js/main.controller.js"></script>
-</body>
-</html>
+</body></html>

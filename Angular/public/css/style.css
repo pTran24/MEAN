@@ -65,3 +65,15 @@ a {
     color: blue; text-decoration: underline;
     cursor: pointer;
 }
+.titleBar {
+    color: white;
+    background-color: blue;
+    font: bold 14px/18px arial;
+    display: block;
+}
+.footer {
+    color: white;
+    background-color: blue;
+    font: italic 9px/12px arial;
+    display: block;
+}
