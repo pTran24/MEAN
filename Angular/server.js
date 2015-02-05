@@ -6,6 +6,8 @@ var app = express();
 var mysql = require('mysql');
 var morgan = require('morgan');
 var bodyParse = require('body-parser');
+
+/* mySQL Connection
 var connection = mysql.createConnection({
     host : '127.0.0.1',
     port : 3333,
@@ -23,10 +25,11 @@ connection.query(query, function(err, rows, fields){
     }
 });
 connection.end();
+*/
 
 // Configuration
 //app.use('/', express.static('./'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/src'));
 app.use(morgan('dev'));
 
 // listen (start app with node server.js)
