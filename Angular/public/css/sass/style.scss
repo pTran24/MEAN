@@ -1,0 +1,80 @@
+// Random color generator
+@function randomColor(){
+    $red: random(256);
+    $green: random(256);
+    $blue: random(256);
+    //$opacity: random(100) / 100;
+    $opacity: .5;
+    @return rgba($red, $green, $blue, $opacity);
+}
+
+// Allocate random background color to cols and rows
+@mixin colorize($colCnt: 1){
+    background: randomColor();
+    @for $colNum from 1 through $colCnt{
+        .col-#{$colNum}{
+            background: randomColor();
+        }
+    }
+}
+.glyphicon {
+    font-size: 32px;
+}
+
+.row-1 {
+    @include colorize;
+}
+.row-2 {
+    @include colorize(2);
+}
+.row-3 {
+    @include colorize(3);
+}
+.row-4 {
+    @include colorize(3);
+    a {
+        color: blue; text-decoration: underline;
+        cursor: pointer;
+    }
+    .large {
+        background-color: blue;
+        color: white;
+        text-align: center;
+        font: bold 50px/80px verdana, serif;
+        border: 6px black ridge;
+    }
+    .small {
+        background-color: lightgreat;
+        text-align: center;
+        border: 1px black solid;
+    }
+}
+.row-5 {
+    @include colorize(2);
+    .titleBar {
+        color: white;
+        background-color: blue;
+        font: bold 14px/18px arial;
+        display: block;
+    }
+    .rect {
+        display: inline-block;
+        height: 40px;
+        width: 100px;
+    }
+    .even {
+        background-color: lightgrey;
+    }
+    .footer {
+        color: white;
+        background-color: blue;
+        font: italic 9px/12px arial;
+        display: block;
+    }
+}
+.row-6 {
+    @include colorize(2);
+    img {
+        width: 200px;
+    }
+}

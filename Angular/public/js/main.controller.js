@@ -109,7 +109,7 @@
     .controller('customDirectiveCtrl', ['$scope', function($scope){
         $scope.title="myApplication";
     }])
-    .directive('myBox', function(){
+    .directive('mybox', function(){
         return {
             transclude: true,
             restrict: 'E',
@@ -192,6 +192,38 @@
                     }
                 });
             }
+        };
+    })
+    .directive('my-photos', function(){
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {},
+            controller: function($scope){
+                var photos = $scope.photos = [];
+                $scope.select = function(photo){
+                    angular.forEach(photos, function(photo){
+                        photo.selected = false;
+                    });
+                    photo.selected = true;
+                };
+                this.addPhoto = function(photo){
+                    photos.push(photo);
+                };
+            },
+            templateUrl: 'views/my_photos.html'
+        };
+    })
+    .directive('my-photo', function(){
+        return{
+            require: '^my-photos',
+            restrict: 'E',
+            transclude: true,
+            scope: { title: '@' },
+            link: function(scope, elem, attrs, photsControl){
+                photosControl.addPhoto(scope);
+            },
+            template: '<div ng-show="selected" ng-transclude></div>'
         };
     });
 })();

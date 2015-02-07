@@ -29,7 +29,7 @@ connection.end();
 
 // Configuration
 //app.use('/', express.static('./'));
-app.use(express.static(__dirname + '/src'));
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 // listen (start app with node server.js)

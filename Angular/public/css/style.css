@@ -1,79 +1,108 @@
-.row-one {
-    background: #A9BCF5;
-}
-.row-two {
-    background: #FA8258;
-}
-.r2col1 {
-    background: #F2F5A9;
-}
-.r2col2 {
-    background: #D8F6CE;
-}
-.row-three {
-    background: #E6E6E6;
-}
-.r3col1 {
-    background: #1C1C1C;
-    color: #E6E6E6;
-}
-.r3col2 {
-    background: #F781F3;
-}
-.r3col3 {
-    background: #58ACFA;
-}
-.row-four {
-    background: #2E64FE;
-}
-.r4col1 {
-    background: #F78181;
-}
-.r4col2 {
-    background: #9AFE2E;
-}
-.footer {
-    background: #A4A4A4;
-}
 .glyphicon {
-    font-size: 32px;
+  font-size: 32px;
 }
-.evenRow {
-    background: #FFFFFF;
+
+.row-1 {
+  background: rgba(136, 232, 182, 0.5);
 }
-.even {
-    background-color: lightgrey;
+.row-1 .col-1 {
+  background: rgba(83, 27, 136, 0.5);
 }
-.rect {
-    display: inline-block;
-    height: 40px;
-    width: 100px;
+
+.row-2 {
+  background: rgba(155, 42, 165, 0.5);
 }
-.large {
-    background-color: blue;
-    color: white;
-    text-align: center;
-    font: bold 50px/80px verdana, serif;
-    border: 6px black ridge;
+.row-2 .col-1 {
+  background: rgba(247, 192, 203, 0.5);
 }
-.small {
-    background-color: lightgreat;
-    text-align: center;
-    border: 1px black solid;
+.row-2 .col-2 {
+  background: rgba(194, 8, 19, 0.5);
 }
-a {
-    color: blue; text-decoration: underline;
-    cursor: pointer;
+
+.row-3 {
+  background: rgba(173, 141, 12, 0.5);
 }
-.titleBar {
-    color: white;
-    background-color: blue;
-    font: bold 14px/18px arial;
-    display: block;
+.row-3 .col-1 {
+  background: rgba(15, 109, 86, 0.5);
 }
-.footer {
-    color: white;
-    background-color: blue;
-    font: italic 9px/12px arial;
-    display: block;
+.row-3 .col-2 {
+  background: rgba(14, 248, 196, 0.5);
 }
+.row-3 .col-3 {
+  background: rgba(188, 209, 201, 0.5);
+}
+
+.row-4 {
+  background: rgba(14, 106, 210, 0.5);
+}
+.row-4 .col-1 {
+  background: rgba(21, 75, 152, 0.5);
+}
+.row-4 .col-2 {
+  background: rgba(179, 177, 5, 0.5);
+}
+.row-4 .col-3 {
+  background: rgba(241, 159, 69, 0.5);
+}
+.row-4 a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.row-4 .large {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font: bold 50px/80px verdana, serif;
+  border: 6px black ridge;
+}
+.row-4 .small {
+  background-color: lightgreat;
+  text-align: center;
+  border: 1px black solid;
+}
+
+.row-5 {
+  background: rgba(103, 124, 102, 0.5);
+}
+.row-5 .col-1 {
+  background: rgba(33, 133, 232, 0.5);
+}
+.row-5 .col-2 {
+  background: rgba(6, 165, 166, 0.5);
+}
+.row-5 .titleBar {
+  color: white;
+  background-color: blue;
+  font: bold 14px/18px arial;
+  display: block;
+}
+.row-5 .rect {
+  display: inline-block;
+  height: 40px;
+  width: 100px;
+}
+.row-5 .even {
+  background-color: lightgrey;
+}
+.row-5 .footer {
+  color: white;
+  background-color: blue;
+  font: italic 9px/12px arial;
+  display: block;
+}
+
+.row-6 {
+  background: rgba(192, 172, 246, 0.5);
+}
+.row-6 .col-1 {
+  background: rgba(84, 210, 130, 0.5);
+}
+.row-6 .col-2 {
+  background: rgba(226, 73, 73, 0.5);
+}
+.row-6 img {
+  width: 200px;
+}
+
+/*# sourceMappingURL=style.css.map */

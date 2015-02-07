@@ -1,31 +1,35 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
+	grunt.initConfig({
         // Get configuration info from package.json
         pkg: grunt.file.readJSON('package.json'),
-        // running `grunt less` will compile once
-        less: {
-            development: {
+        sass: {
+            dev: {
                 options: {
-                    paths: ["public/css"],
-                    yuicompress: true
-                },
-            files: {
-                "public/css/style.css": "public/css/style.less"
-            }
-        },
-        min: {
+					style: 'expanded'
+    	        },
+    	        files: {
+    	            "public/css/style.css": "public/css/sass/style.scss" // <target>.css : <source>.less
+    	        }
+    	    },
             dist: {
-                src: './public/less/*.less',
-                dest: './public/css/*.css'
-            }
-        }
-    },
-    // running `grunt watch` will watch for changes
-    watch: {
-        files: "./public/css/*.less",
-        tasks: ["less"]
-    }
-});
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+                options: {
+					style: 'compressed'
+    	        },
+    	        files: {
+    	            "public/css/style.css": "public/css/sass/style.scss" // <target>.css : <source>.less
+    	        }
+    	    },
+    	},
+	    // running `grunt watch` will watch for changes
+	    watch: {
+	        files: "public/css/sass/*.scss",
+	        tasks: ["sass:dev"]
+	    }
+	});
+    // load grunt tasks
+	// grunt.loadNpmTasks('grunt-contrib-sass');
+    // grunt.loadNpmTasks('grunt-contrib-watch');
+    require('load-grunt-tasks')(grunt);
+	// set default of "grunt" command to "watch"
+	grunt.registerTask('default', ['watch']);
 };
