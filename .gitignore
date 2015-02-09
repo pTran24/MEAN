@@ -1,4 +1,7 @@
+# Swap files
 *.swp
+
+# Dependency directories
 node_modules/
 bower_components/
 **/public/lib/
