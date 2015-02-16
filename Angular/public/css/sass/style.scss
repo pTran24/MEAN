@@ -78,3 +78,6 @@
         width: 200px;
     }
 }
+.row-7 {
+    @include colorize(2);
+}

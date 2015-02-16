@@ -24,21 +24,21 @@
         $scope.valueA = 1;
         $scope.inc = function() {
             $scope.valueA++;
-        }
+        };
     }])
     .controller('LevelBCtrl', ['$scope', function($scope){
         $scope.title = "Level B";
         $scope.valueB = 5;
         $scope.inc = function(){
             $scope.valueB++;
-        }
+        };
     }])
     .controller('LevelCCtrl', ['$scope', function($scope){
         $scope.title = "Level C ";
         $scope.valueC = 10;
         $scope.inc = function(){ //incrementing function
             $scope.valueC++;
-        }
+        };
     }])
     .controller('ArrayManipulateCtrl', ['$scope', function($scope){
         $scope.Math = window.Math;
@@ -65,7 +65,7 @@
         $scope.filterString = '';
         $scope.setFilter = function(value){
             $scope.filteredPlanes = filterFilter($scope.planes, $scope.filterString);
-        }
+        };
     }])
     .filter('censor', function(){
         return function(input, replacement){
@@ -146,7 +146,7 @@
                         if (event.pageX > lastX && elem.width() < 300){
                             adjustment = 1.1;
                         } else if (elem.width() > 100){
-                            adjustment = .9;
+                            adjustment = 0.9;
                         }
                         //requires full jQuery library
                         if (adjustment){
@@ -182,7 +182,7 @@
                         if (event.pageY > lastY && currentOpacity < 1){
                             adjustment = 1.1;
                         } else if (currentOpacity > 0.5){
-                            adjustment = .9;
+                            adjustment = 0.9;
                         }
                         //requires full jQuerylibrary
                         if (adjustment){
@@ -194,7 +194,7 @@
             }
         };
     })
-    .directive('my-photos', function(){
+    .directive('myPhotos', function(){
         return {
             restrict: 'E',
             transclude: true,
@@ -214,9 +214,9 @@
             templateUrl: 'views/my_photos.html'
         };
     })
-    .directive('my-photo', function(){
+    .directive('myPhoto', function(){
         return{
-            require: '^my-photos',
+            require: '^myPhotos',
             restrict: 'E',
             transclude: true,
             scope: { title: '@' },
@@ -225,5 +225,32 @@
             },
             template: '<div ng-show="selected" ng-transclude></div>'
         };
-    });
+    })
+    .controller('watchCtrl', ['$scope', function($scope){
+        $scope.mColors = ['red', 'green', 'blue'];
+        $scope.myColor = '';
+        $scope.hits = 0;
+        $scope.misses = 0;
+        $scope.changes = 0;
+        $scope.myObj = {color: '', hits: '', misses: ''};
+        $scope.setColor = function (color){
+            $scope.myColor = color;
+        };
+        $scope.hit = function(){
+            $scope.hits += 1;
+        };
+        $scope.miss = function(){
+            $scope.misses += 1;
+        };
+        $scope.$watch('myColor', function(newValue, oldValue){
+            $scope.myObj.color = newValue;
+        });
+        $scope.$watchGroup(['hits', 'misses'], function(newValue, oldValue){
+            $scope.myObj.hits = newValue[0];
+            $scope.myObj.misses = newValue[1];
+        });
+        $scope.$watchCollection('myObj', function(newValue, oldValue){
+            $scope.changes += 1;
+        });
+    }]);
 })();

@@ -30,7 +30,7 @@
 			<!-- Col 1 -->
 			<div class='col-md-6 col-1 well'>
 				<i class='glyphicon glyphicon-fire'></i>
-				<h1 class='myh1'>Data Binding</h1>
+				<h1 class='myh1'>HEADER1</h1>
 				<p>Value A: <input type="number" ng-model="valueA"</p>
 				<p>Value B: <input type="number" ng-model="valueB"</p>
 				<p>Expression: {{valueA}} + {{valueB}}</p>
@@ -65,8 +65,7 @@
 		<div class='row row-3'>
 			<!-- Col 1 -->
 			<div class='col-md-4 col-1' ng-controller="ArrayManipulateCtrl">
-				<i class='glyphicon glyphicon-leaf'></i>
-				<h3>Array Manipulation</h3>
+				<h3><i class='glyphicon glyphicon-leaf'></i>Array Manipulation</h3>
 				<p class='lead'>Paragraph under first column.</p>
 				<p>Another Paragraph under first column.</p>
 				<p>Array: {{myArr}}</p>
@@ -80,8 +79,7 @@
 			</div>
 			<!-- Col 2 -->
 			<div class='col-md-4 col-2'>
-				<i class='glyphicon glyphicon-tint'></i>
-				<h3>Filters</h3>
+				<h3><i class='glyphicon glyphicon-tint'></i>Filters</h3>
 				<p>Paragraph under second column.</p>
 				<p>Filters:</p>
 				<p>json {{ {name:'bob'} | json}}</p>
@@ -98,7 +96,7 @@
 				<p><input type="radio" ng-model="cameraName" value="Canon"> Canon</p>
 				<p><input type="radio" ng-model="cameraName" value="Nikon"> Nikon</p>
 				<p>Selected Camera: {{cameraName}}</p>
-				<select -ng-model="camera" ng-options="c.model group by c.make for c in cameras"></select>
+				<select ng-model="camera" ng-options="c.model group by c.make for c in cameras"></select>
 				{{camera|json}}
 			</div>
 		</div>
@@ -195,6 +193,23 @@
 						<img src="img/sky.jpg"/>
 					</my-photo>
 				</my-photos>
+			</div>
+		</div>
+		<div class='row row-7'>
+			<div class='col-md-4 col-1'>
+				<h2>Watching Values in the AngularJS Scope</h2>
+				<div ng-controller="watchCtrl">
+					Select Color:
+					<span ng-repeat="mColor in mColors">
+						<span ng-style="{color: mColor}" ng-click="setColor(mColor)">{{mColor}}</span>
+					</span><hr>
+					<span ng-click="hit()">[+]</span>
+					Hits: {{hits}}<br>
+					<span ng-click="miss()">[+]</span>
+					misses: {{misses}}<hr>
+					Object: {{myObj|json}} <br>
+					Number of Chnages: {{changes}}
+				</div>
 			</div>
 		</div>
 	</div> <!-- End Container-->
