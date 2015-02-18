@@ -1,37 +1,45 @@
 // server.js
 
-// Setup
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
 var morgan = require('morgan');
 var bodyParse = require('body-parser');
+var router = express.Router();
 
-/* mySQL Connection
-var connection = mysql.createConnection({
-    host : '127.0.0.1',
-    port : 3333,
-    user : 'xajin',
-    password : 'secretpw',
-});
+// get environment variables
+var port = process.env.PORT || 1234;
+var env = process.env.NODE_ENV || 'dev';
 
-// mySQL config
-connection.connect();
-var query = 'SELECT * FROM lisacatalog.domain;';
-connection.query(query, function(err, rows, fields){
-    if (err) throw err;
-    for (var i in rows) {
-        console.log('The solution is: ', rows[i]);
+// configuration
+app.use(express.static(__dirname + '/public'));
+
+if ('dev' == env){
+    app.use(morgan('dev'));
+}
+
+// define routes
+router.param('name', function(req, res, next, name){
+    if (name.length > 5){
+        console.log("Please shorten name!");
+    } else {
+        req.name = name;
+        next();
     }
 });
-connection.end();
-*/
 
-// Configuration
-//app.use('/', express.static('./'));
-app.use(express.static(__dirname + '/public'));
-app.use(morgan('dev'));
+router.get('/sample', function(req, res){
+    res.send('sample!');
+});
+router.get('/hello/:name', function(req, res){
+    //res.send('Hello ' + req.params.name + '!');
+    res.send('Hello ' + req.name + '!');
+});
+
+// apply routes
+app.use('/', router);
 
 // listen (start app with node server.js)
-app.listen(1234);
-console.log("Listening");
+app.listen(port, function(){
+    console.log("Listening on %d in %s mode", port, env);
+});
